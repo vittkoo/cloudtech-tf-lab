@@ -8,9 +8,17 @@ exports.handler = async () => {
   const params = { TableName: "cloudtech-dev-courses" };
   try {
     const data = await ddbDocClient.send(new ScanCommand(params));
-    return data.Items;
+    return {
+      statusCode: 200,
+      headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
+      body: JSON.stringify(data.Items)
+    };
   } catch (err) {
     console.error(err);
-    throw err;
+    return {
+      statusCode: 500,
+      headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
+      body: JSON.stringify({ error: err.message })
+    };
   }
 };

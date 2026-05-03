@@ -1,11 +1,11 @@
-# Terraform тимчасові файли
+# тимчасові файли
 .terraform/
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
 
-# Архіви лямбд (вони генеруються автоматично, їх не пушимо)
+# врхіви
 *.zip
 
-# Локальні секрети (якщо є)
+
 .aws-vault/
